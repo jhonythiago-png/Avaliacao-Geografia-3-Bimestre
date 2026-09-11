@@ -51,7 +51,8 @@ body { font-family: 'Segoe UI', system-ui, sans-serif; background: #eefaf6; min-
   body * { background-color: transparent !important; background-image: none !important; color: #111 !important; box-shadow: none !important; }
   .answers-list { border: 1px solid #ccc !important; }
   .answer-item { break-inside: avoid !important; page-break-inside: avoid !important; }
-  .level-header { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  .level-header { page-break-after: avoid !important; break-after: avoid !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  .hero { padding: 14px 20px !important; }
   .lv1 { background: linear-gradient(135deg,#0d9488,#2dd4bf) !important; }
   .lv2 { background: linear-gradient(135deg,#f7971e,#ffd200) !important; }
   .lv3 { background: linear-gradient(135deg,#0369a1,#7c3aed) !important; }

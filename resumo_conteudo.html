@@ -93,12 +93,57 @@ body { font-family: 'Segoe UI', system-ui, sans-serif; background: #eefaf6; colo
 
 @media print {
   .top-nav, .print-btn-wrap, .nav-dots, .progress-footer, .bottom-nav, .hero, .credit { display: none !important; }
+  .print-title-header { display: block !important; }
   html, body { background: white !important; color: #111 !important; font-size: 11pt; }
   body * { background-color: transparent !important; background-image: none !important; color: #111 !important; box-shadow: none !important; text-shadow: none !important; }
+
+  .section { padding: 10px 0 4px !important; page-break-inside: avoid !important; }
+  .section-header { margin-bottom: 8px !important; }
+  .section-icon { width: 32px !important; height: 32px !important; font-size: 1rem !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  .section-title { font-size: 12pt !important; font-weight: 700 !important; color: #14211d !important; }
+  .section-sub   { color: #555 !important; }
+
+  .card { border: 1px solid #bbb !important; border-radius: 6px !important; break-inside: avoid !important; page-break-inside: avoid !important; margin-bottom: 8px !important; padding: 10px !important; }
+  .card-title { color: #0d9488 !important; }
+
+  .rule-box { border: 1.5px solid #555 !important; border-radius: 6px !important; break-inside: avoid !important; page-break-inside: avoid !important; padding: 10px !important; }
+  .rule-title { color: #0d9488 !important; }
+  .rule-tag { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; font-size: 8pt !important; padding: 2px 6px !important; }
+  .rule-text { font-size: 10pt !important; }
+  .rule-text em { color: #0d9488 !important; }
+  .rule-row { border-bottom: 1px dashed #ccc !important; }
+
+  .tip { border-left: 3px solid #0d9488 !important; background: #f4fdfb !important; break-inside: avoid !important; page-break-inside: avoid !important; padding: 8px 10px !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  .tip strong { color: #0d9488 !important; }
+
+  .example-box { border: 1px solid #ccc !important; border-radius: 4px !important; break-inside: avoid !important; page-break-inside: avoid !important; }
+  .ex-correct { color: #166534 !important; }
+
+  .flow-grid { break-inside: avoid !important; page-break-inside: avoid !important; }
+  .flow-step { border: 1px solid #ccc !important; }
+  .flow-arrow { color: #555 !important; }
+
+  .num-grid { break-inside: avoid !important; page-break-inside: avoid !important; }
+  .num-item { border: 1px solid #ddd !important; border-radius: 4px !important; }
+  .num-item .num-big { color: #0369a1 !important; }
+
+  .divider { border-top: 1px solid #ddd !important; display: block !important; }
+
+  #sec1 { page-break-before: avoid !important; }
+  #sec2, #sec3, #sec4, #sec5, #sec6, #sec7, #sec8 { page-break-before: always !important; }
+
+  @page { margin: 1.5cm; size: A4; }
 }
 </style>
 </head>
 <body>
+
+<!-- PRINT HEADER (hidden on screen) -->
+<div class="print-title-header" style="display:none;text-align:center;padding:0 0 12px;border-bottom:2px solid #0d9488;margin-bottom:16px;">
+  <div style="font-size:14pt;font-weight:900;color:#0d9488;">Geografia — Guia de Estudos</div>
+  <div style="font-size:10pt;color:#555;margin-top:4px;">Recursos Naturais e Trabalho Humano · Capítulos 7 e 8 · Desenvolvido por Jhony Beraldo</div>
+</div>
+
 <div class="top-nav">
   <a href="index.html">🏠 Início</a>
   <span>📚 Resumo do Conteúdo</span>
