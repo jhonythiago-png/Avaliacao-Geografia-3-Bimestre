@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>📋 Gabarito – Geografia</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; background: #eefaf6; min-height: 100vh; padding-bottom: 40px; }
+.top-nav { background: #0f2e2b; padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 50; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.top-nav a { color: #5eead4; font-size: 0.8rem; font-weight: 700; text-decoration: none; background: rgba(13,148,136,0.25); border: 1px solid rgba(13,148,136,0.4); padding: 5px 12px; border-radius: 20px; }
+.top-nav span { color: rgba(255,255,255,0.45); font-size: 0.78rem; }
+.hero { background: linear-gradient(145deg,#0c2d3c,#0f2e2b,#134e4a); padding: 30px 20px 22px; text-align: center; }
+.hero-icon { font-size: 2.8rem; display: block; margin-bottom: 10px; }
+.hero h1 { font-size: 1.5rem; font-weight: 900; color: white; }
+.hero p  { font-size: 0.88rem; color: rgba(255,255,255,0.6); margin-top: 6px; }
+.hero-pill { display: inline-block; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.8); font-size: 0.72rem; font-weight: 700; padding: 4px 14px; border-radius: 20px; margin-top: 12px; }
+.wrap { padding: 16px 14px 0; max-width: 480px; margin: 0 auto; }
+.print-btn-wrap { text-align: right; margin-bottom: 12px; }
+.print-btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 16px; background: transparent; border: 1px solid rgba(13,148,136,0.35); border-radius: 20px; font-size: 0.78rem; font-family: inherit; font-weight: 600; color: rgba(13,148,136,0.7); cursor: pointer; }
+.level-block { margin-bottom: 22px; }
+.level-header { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 16px 16px 0 0; }
+.lv1 { background: linear-gradient(135deg,#0d9488,#2dd4bf); }
+.lv2 { background: linear-gradient(135deg,#f7971e,#ffd200); }
+.lv3 { background: linear-gradient(135deg,#0369a1,#7c3aed); }
+.level-icon { font-size: 1.6rem; }
+.level-title { font-size: 1rem; font-weight: 900; color: white; }
+.level-sub   { font-size: 0.75rem; color: rgba(255,255,255,0.85); margin-top: 2px; }
+.answers-list { background: white; border-radius: 0 0 16px 16px; border: 1.5px solid #dcf3ee; border-top: none; overflow: hidden; }
+.answer-item { display: flex; gap: 12px; align-items: flex-start; padding: 13px 16px; border-bottom: 1px solid #eefaf6; }
+.answer-item:last-child { border-bottom: none; }
+.ans-num { width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 900; color: white; margin-top: 1px; }
+.lv1 .ans-num { background: linear-gradient(135deg,#0d9488,#2dd4bf); }
+.lv2 .ans-num { background: linear-gradient(135deg,#f7971e,#ffd200); color: #333; }
+.lv3 .ans-num { background: linear-gradient(135deg,#0369a1,#7c3aed); }
+.ans-body { flex: 1; }
+.ans-q { color: #9ca8a4; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+.ans-a { color: #14211d; font-weight: 800; }
+.ans-exp { color: #5c6e68; margin-top: 3px; font-size: 0.87rem; line-height: 1.5; }
+.ans-tip { display: inline-block; margin-top: 5px; background: #ecfdf5; border-radius: 8px; padding: 4px 10px; font-size: 0.78rem; color: #0d9488; font-weight: 600; }
+.bottom-nav { display: flex; gap: 10px; padding: 0; margin: 20px 0 10px; }
+.bottom-nav a { flex: 1; padding: 13px 10px; border-radius: 14px; text-decoration: none; text-align: center; font-size: 0.85rem; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 6px; }
+.btn-prev { background: #ecfdf5; border: 1.5px solid #dcf3ee; color: #4b5f59 !important; }
+.btn-next { background: linear-gradient(135deg,#0d9488,#2dd4bf); color: white !important; }
+.btn-home-only { background: rgba(13,148,136,0.08); border: 1.5px solid rgba(13,148,136,0.2); color: #0d9488 !important; flex: 0.6; }
+.credit { text-align: center; padding: 16px 14px 8px; font-size: 0.75rem; color: #bbb; }
+.credit strong { color: #0d9488; }
+@media print {
+  .top-nav,.print-btn-wrap,.bottom-nav { display: none !important; }
+  html, body { background: white !important; color: #111 !important; }
+  body * { background-color: transparent !important; background-image: none !important; color: #111 !important; box-shadow: none !important; }
+  .answers-list { border: 1px solid #ccc !important; }
+  .answer-item { break-inside: avoid !important; page-break-inside: avoid !important; }
+  .level-header { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  .lv1 { background: linear-gradient(135deg,#0d9488,#2dd4bf) !important; }
+  .lv2 { background: linear-gradient(135deg,#f7971e,#ffd200) !important; }
+  .lv3 { background: linear-gradient(135deg,#0369a1,#7c3aed) !important; }
+  .credit { color: #888 !important; }
+  @page { margin: 1.5cm; size: A4; }
+}
+</style>
+</head>
+<body>
+<div class="top-nav">
+  <a href="index.html">🏠 Início</a>
+  <span>📋 Gabarito — Geografia</span>
+  <div style="width:80px;"></div>
+</div>
+<div class="hero">
+  <span class="hero-icon">📋</span>
+  <h1>Gabarito Completo</h1>
+  <p>Geografia · Recursos Naturais e Trabalho — Caps. 7 e 8</p>
+  <div class="hero-pill">Todos os níveis com explicações</div>
+</div>
+<div class="wrap">
+<div class="print-btn-wrap"><button class="print-btn" onclick="window.print()">🖨️ Imprimir Gabarito</button></div>
+
+<!-- NÍVEL 1 -->
+<div class="level-block">
+  <div class="level-header lv1"><div class="level-icon">⭐</div><div><div class="level-title">Nível 1 — Básico</div><div class="level-sub">14 questões · Conceitos fundamentais</div></div></div>
+  <div class="answers-list lv1">
+    <div class="answer-item"><div class="ans-num lv1">1</div><div class="ans-body"><div class="ans-q">A água é importante porque</div><div class="ans-a">É essencial para a vida de todos os seres vivos</div><div class="ans-exp">Sem água, nenhum ser vivo sobrevive.</div></div></div>
+    <div class="answer-item"><div class="ans-num lv1">2</div><div class="ans-body"><div class="ans-q">Maior parte da água do planeta</div><div class="ans-a">Água salgada (oceanos e mares)</div><div class="ans-exp">A água doce é uma parte muito pequena em comparação.</div></div></div>
+    <div class="answer-item"><div class="ans-num lv1">3</div><div class="ans-body"><div class="ans-q">Água vira vapor e sobe</div><div class="ans-a">Evaporação</div><div class="ans-exp">O Sol esquenta a água, que evapora e forma as nuvens.</div></div></div>
+    <div class="answer-item"><div class="ans-num lv1">4</div><div class="ans-body"><div class="ans-q">Reservas de água da Terra</div><div class="ans-a">Mananciais</div><div class="ans-exp">Rios, lagos e águas subterrâneas são mananciais.</div></div></div>
+    <div class="answer-item"><div class="ans-num lv1">5</div><div class="ans-body"><div class="ans-q">Água escondida embaixo da terra</div><div class="ans-a">Água subterrânea</div><div class="ans-exp">Fica em fontes naturais, poços e no lençol freático.</div></div></div>
+    <div class="answer-item"><div class="ans-num lv1">6</div><div class="ans-body"><div class="ans-q">Água azul</div><div class="ans-a">Vem de rios, lagos, represas e chuvas, podendo ser potável</div><div class="ans-exp">É a água ainda não utilizada pelas pessoas.</div></div></div>
+    <div class="answer-item"><div class="ans-num lv1">7</div><div class="ans-body"><div class="ans-q">Água absorvida pelas raízes</div><div class="ans-a">Água verde</div><div class="ans-exp">Disponível no solo para os vegetais (evapotranspiração).</div></div></div>
+    <div class="answer-item"><div class="ans-num lv1">8</div><div class="ans-body"><div class="ans-q">Água cinza</div><div class="ans-a">Já foi usada pelas pessoas e precisa ser tratada</div><div class="ans-exp">Vai para a rede de esgoto antes de voltar à natureza.</div></div></div>
+    <div class="answer-item"><div class="ans-num lv1">9</div><div class="ans-body"><div class="ans-q">Rede que recebe água usada</div><div class="ans-a">Esgoto</div><div class="ans-exp">Recebe as águas já utilizadas nas casas.</div></div></div>
+    <div class="answer-item"><div class="ans-num lv1">10</div><div class="ans-body"><div class="ans-q">Tratamento da água e do esgoto</div><div class="ans-a">Saneamento</div><div class="ans-exp">Deixa a água própria para consumo.</div></div></div>
+    <div class="answer-item"><div class="ans-num lv1">11</div><div class="ans-body"><div class="ans-q">Hidrelétricas usam a força da água para</div><div class="ans-a">Gerar energia elétrica</div><div class="ans-exp">A água move as turbinas que geram energia.</div></div></div>
+    <div class="answer-item"><div class="ans-num lv1">12</div><div class="ans-body"><div class="ans-q">Matéria-prima</div><div class="ans-a">Item retirado da natureza que serve de base para um produto</div><div class="ans-exp">Ex: o milho é a matéria-prima da pamonha.</div></div></div>
+    <div class="answer-item"><div class="ans-num lv1">13</div><div class="ans-body"><div class="ans-q">No trabalho manual, o produto é feito</div><div class="ans-a">Do início ao fim por uma só pessoa</div><div class="ans-exp">De forma detalhada — é o artesanato.</div></div></div>
+    <div class="answer-item"><div class="ans-num lv1">14</div><div class="ans-body"><div class="ans-q">Minerais usados no computador</div><div class="ans-a">Ouro, prata, cobre e quartzo</div><div class="ans-exp">Junto com plástico (petróleo) e vidro (areia).</div></div></div>
+  </div>
+</div>
+
+<!-- NÍVEL 2 -->
+<div class="level-block">
+  <div class="level-header lv2"><div class="level-icon">🔥</div><div><div class="level-title">Nível 2 — Intermediário</div><div class="level-sub">14 questões · Aprofundamento e números</div></div></div>
+  <div class="answers-list lv2">
+    <div class="answer-item"><div class="ans-num lv2">1</div><div class="ans-body"><div class="ans-q">Sem rede de esgoto no Brasil (a cada 100)</div><div class="ans-a">45</div><div class="ans-exp">Um dado que mostra o desafio do saneamento no Brasil.</div></div></div>
+    <div class="answer-item"><div class="ans-num lv2">2</div><div class="ans-body"><div class="ans-q">Primeiras fábricas fabricavam</div><div class="ans-a">Fios e tecidos</div><div class="ans-exp">Com teares movidos a vapor.</div></div></div>
+    <div class="answer-item"><div class="ans-num lv2">3</div><div class="ans-body"><div class="ans-q">Litros de água para produzir 1 kg de batata</div><div class="ans-a">100</div><div class="ans-exp">Isso é chamado de água virtual.</div></div></div>
+    <div class="answer-item"><div class="ans-num lv2">4</div><div class="ans-body"><div class="ans-q">Água verde</div><div class="ans-a">Está no solo e é absorvida pelas raízes das plantas</div><div class="ans-exp">Diferente da água cinza (já usada) e azul (de rios e chuvas).</div></div></div>
+    <div class="answer-item"><div class="ans-num lv2">5</div><div class="ans-body"><div class="ans-q">Onde a água usada é tratada</div><div class="ans-a">Estação de Tratamento de Esgoto (ETE)</div><div class="ans-exp">Limpa a água antes de devolvê-la à natureza.</div></div></div>
+    <div class="answer-item"><div class="ans-num lv2">6</div><div class="ans-body"><div class="ans-q">País onde a Revolução Industrial começou</div><div class="ans-a">Inglaterra</div><div class="ans-exp">Por volta de 1760.</div></div></div>
+    <div class="answer-item"><div class="ans-num lv2">7</div><div class="ans-body"><div class="ans-q">Consumo médio de água por pessoa, por dia</div><div class="ans-a">110 litros</div><div class="ans-exp">Um bom motivo para economizar no dia a dia.</div></div></div>
+    <div class="answer-item"><div class="ans-num lv2">8</div><div class="ans-body"><div class="ans-q">No artesanato, cada peça é</div><div class="ans-a">Única e exclusiva, feita à mão</div><div class="ans-exp">Diferente da produção industrial, feita em série.</div></div></div>
+    <div class="answer-item"><div class="ans-num lv2">9</div><div class="ans-body"><div class="ans-q">Hidrelétricas movem</div><div class="ans-a">Turbinas, que geram energia elétrica</div><div class="ans-exp">A força da água é usada para isso.</div></div></div>
+    <div class="answer-item"><div class="ans-num lv2">10</div><div class="ans-body"><div class="ans-q">Exploração sem planejamento causa</div><div class="ans-a">Desmatamento e poluição dos rios</div><div class="ans-exp">Além de perda de fertilidade do solo e poluição sonora.</div></div></div>
+    <div class="answer-item"><div class="ans-num lv2">11</div><div class="ans-body"><div class="ans-q">Invenção para escrever com facilidade</div><div class="ans-a">A caneta ou o lápis</div><div class="ans-exp">A necessidade humana cria as invenções.</div></div></div>
+    <div class="answer-item"><div class="ans-num lv2">12</div><div class="ans-body"><div class="ans-q">Além dos minerais, o computador usa</div><div class="ans-a">Plástico (do petróleo) e vidro (da areia)</div><div class="ans-exp">Vários recursos naturais compõem a tecnologia.</div></div></div>
+    <div class="answer-item"><div class="ans-num lv2">13</div><div class="ans-body"><div class="ans-q">Água subterrânea</div><div class="ans-a">Fica escondida embaixo da terra, como no lençol freático</div><div class="ans-exp">Diferente da água superficial (rios e lagos).</div></div></div>
+    <div class="answer-item"><div class="ans-num lv2">14</div><div class="ans-body"><div class="ans-q">Base para criação de um produto</div><div class="ans-a">Matéria-prima</div><div class="ans-exp">Pode vir direto da natureza ou já modificada.</div></div></div>
+  </div>
+</div>
+
+<!-- NÍVEL 3 -->
+<div class="level-block">
+  <div class="level-header lv3"><div class="level-icon">💎</div><div><div class="level-title">Nível 3 — Avançado</div><div class="level-sub">21 questões · Raciocínio e reflexão</div></div></div>
+  <div class="answers-list lv3">
+    <div class="answer-item"><div class="ans-num lv3">1</div><div class="ans-body"><div class="ans-q">Ordem: do milho à pamonha</div><div class="ans-a">Plantar → Colher/descascar → Preparar massa → Enrolar → Cozinhar</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">2</div><div class="ans-body"><div class="ans-q">Água de rios, lagos, represas e chuvas</div><div class="ans-a">Azul</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">3</div><div class="ans-body"><div class="ans-q">Por que a água doce é preciosa</div><div class="ans-a">É a única que os seres vivos podem beber e usar no dia a dia</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">4</div><div class="ans-body"><div class="ans-q">Água usada que precisa de tratamento</div><div class="ans-a">Cinza</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">5</div><div class="ans-body"><div class="ans-q">Reservas de água da Terra</div><div class="ans-a">Mananciais</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">6</div><div class="ans-body"><div class="ans-q">Desmatamento e ciclo da água</div><div class="ans-a">Menos árvores = menos evapotranspiração = menos chuva na região</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">7</div><div class="ans-body"><div class="ans-q">45 em 100 sem rede de esgoto: problema de</div><div class="ans-a">Saneamento básico</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">8</div><div class="ans-body"><div class="ans-q">Energia da força da água</div><div class="ans-a">Hidrelétrica</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">9</div><div class="ans-body"><div class="ans-q">Diferença manual x industrial</div><div class="ans-a">Manual: uma pessoa faz tudo · Industrial: máquinas produzem em grande quantidade</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">10</div><div class="ans-body"><div class="ans-q">Início do trabalho industrial</div><div class="ans-a">A Revolução Industrial, na Inglaterra</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">11</div><div class="ans-body"><div class="ans-q">Trabalho manual com peças únicas</div><div class="ans-a">Artesanato</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">12</div><div class="ans-body"><div class="ans-q">Substituiu o trabalho manual na Revolução Industrial</div><div class="ans-a">A produção com máquinas nas fábricas</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">13</div><div class="ans-body"><div class="ans-q">Minerais no computador mostram que a tecnologia depende de</div><div class="ans-a">Recursos naturais retirados da natureza</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">14</div><div class="ans-body"><div class="ans-q">Exploração sem cuidado causa perda de fertilidade do</div><div class="ans-a">Solo</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">15</div><div class="ans-body"><div class="ans-q">Atitude que evita desperdício de água</div><div class="ans-a">Fechar a torneira ao ensaboar as mãos ou escovar os dentes</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">16</div><div class="ans-body"><div class="ans-q">Água virtual</div><div class="ans-a">É a água gasta para produzir um alimento ou produto, mesmo sem vermos diretamente</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">17</div><div class="ans-body"><div class="ans-q">Água absorvida pelas raízes</div><div class="ans-a">Verde</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">18</div><div class="ans-body"><div class="ans-q">Função das hidrelétricas</div><div class="ans-a">Gerar energia elétrica a partir da força da água</div></div></div>
+    <div class="answer-item"><div class="ans-num lv3">19</div><div class="ans-body"><div class="ans-q">💭 Por que cuidar da água (reflexão)</div><div class="ans-a">A água doce que usamos é uma parte pequena do planeta e pode faltar ou ficar poluída</div><span class="ans-tip">Sem gabarito fechado — resposta pessoal</span></div></div>
+    <div class="answer-item"><div class="ans-num lv3">20</div><div class="ans-body"><div class="ans-q">💭 Exemplo de matéria-prima (reflexão)</div><div class="ans-a">Algodão (matéria-prima) → roupas (produto final)</div><span class="ans-tip">Outros exemplos também valem!</span></div></div>
+    <div class="answer-item"><div class="ans-num lv3">21</div><div class="ans-body"><div class="ans-q">💭 Atitude para economizar (reflexão)</div><div class="ans-a">Fechar a torneira, tomar banhos mais rápidos, apagar luzes, desligar aparelhos</div><span class="ans-tip">Resposta pessoal — qualquer exemplo correto vale!</span></div></div>
+  </div>
+</div>
+
+<div class="bottom-nav">
+  <a href="nivel3_avancado.html" class="btn-prev">← Nível 3</a>
+  <a href="index.html" class="btn-home-only">🏠</a>
+  <a href="resumo_conteudo.html" class="btn-next">📚 Resumo →</a>
+</div>
+</div>
+<div class="credit">Desenvolvido por <strong>Jhony Beraldo</strong></div>
+</body>
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>📚 Resumo – Geografia</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; background: #eefaf6; color: #14211d; padding-bottom: 80px; }
+
+.top-nav { background: #0f2e2b; padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 50; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.top-nav a { color: #5eead4; font-size: 0.8rem; font-weight: 700; text-decoration: none; background: rgba(13,148,136,0.25); border: 1px solid rgba(13,148,136,0.4); padding: 5px 12px; border-radius: 20px; }
+.top-nav span { color: rgba(255,255,255,0.45); font-size: 0.78rem; }
+
+.hero { background: linear-gradient(145deg,#064e3b,#0d9488,#0891b2); padding: 32px 20px 24px; text-align: center; position: relative; overflow: hidden; }
+.hero::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 30%, rgba(255,255,255,0.1), transparent 60%); pointer-events: none; }
+.hero-emoji { font-size: 3rem; display: block; margin-bottom: 10px; position: relative; }
+.hero h1 { font-size: 1.55rem; font-weight: 900; color: white; line-height: 1.2; position: relative; }
+.hero h2 { font-size: 0.95rem; color: rgba(255,255,255,0.75); font-weight: 400; margin-top: 6px; position: relative; }
+.hero-pill { display: inline-block; background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); color: white; font-size: 0.72rem; font-weight: 700; padding: 4px 14px; border-radius: 20px; margin-top: 12px; position: relative; }
+
+.print-btn-wrap { text-align: right; padding: 10px 16px 0; }
+.print-btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 16px; background: transparent; border: 1px solid rgba(13,148,136,0.35); border-radius: 20px; font-size: 0.78rem; font-family: inherit; font-weight: 600; color: rgba(13,148,136,0.7); cursor: pointer; }
+.print-btn:hover { border-color: #0d9488; color: #0d9488; }
+
+.nav-dots { display: flex; justify-content: center; gap: 6px; padding: 12px 8px; background: #eefaf6; border-bottom: 1px solid #d7f0e9; flex-wrap: wrap; position: sticky; top: 41px; z-index: 40; }
+.nav-dot { background: none; border: 2px solid #7dd3c5; color: #0d9488; font-size: 0.68rem; font-weight: 700; padding: 4px 9px; border-radius: 20px; cursor: pointer; white-space: nowrap; }
+.nav-dot.active, .nav-dot:active { background: #0d9488; color: white; border-color: #0d9488; }
+
+.section { padding: 20px 16px 8px; }
+.section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.section-icon { width: 44px; height: 44px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+.s1 { background: linear-gradient(135deg,#0d9488,#2dd4bf); }
+.s2 { background: linear-gradient(135deg,#0369a1,#38bdf8); }
+.s3 { background: linear-gradient(135deg,#7c3aed,#a855f7); }
+.s4 { background: linear-gradient(135deg,#d97706,#f59e0b); }
+.s5 { background: linear-gradient(135deg,#facc15,#f59e0b); }
+.s6 { background: linear-gradient(135deg,#16a34a,#22c55e); }
+.s7 { background: linear-gradient(135deg,#dc2626,#f43f5e); }
+.s8 { background: linear-gradient(135deg,#475569,#64748b); }
+.section-title { font-size: 1.05rem; font-weight: 800; color: #14211d; }
+.section-sub { font-size: 0.74rem; color: #7c8f89; margin-top: 2px; }
+
+.card { background: white; border-radius: 16px; padding: 16px; margin-bottom: 12px; box-shadow: 0 2px 12px rgba(13,148,136,0.08); border: 1px solid #dcf3ee; }
+.card-title { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #0d9488; margin-bottom: 10px; }
+
+.tip { background: linear-gradient(135deg,#ecfdf5,#eff6ff); border-left: 4px solid #2dd4bf; border-radius: 0 12px 12px 0; padding: 12px 14px; margin-bottom: 12px; font-size: 0.88rem; line-height: 1.6; }
+.tip .tip-title { font-size: 0.7rem; font-weight: 700; color: #0d9488; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+.tip strong { color: #0d9488; }
+
+.rule-box { background: white; border: 2px solid #0d9488; border-radius: 14px; padding: 14px; margin-bottom: 12px; }
+.rule-title { font-size: 0.7rem; font-weight: 700; color: #0d9488; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+.rule-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dashed #dcf3ee; }
+.rule-row:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+.rule-tag { color: white; font-size: 0.75rem; font-weight: 800; padding: 3px 10px; border-radius: 6px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+.bg-teal   { background: #0d9488; }
+.bg-blue   { background: #0369a1; }
+.bg-purple { background: #7c3aed; }
+.bg-amber  { background: #d97706; }
+.bg-green  { background: #16a34a; }
+.bg-red    { background: #dc2626; }
+.bg-gray   { background: #475569; }
+.rule-text { font-size: 0.88rem; line-height: 1.55; }
+.rule-text em { color: #0d9488; font-style: normal; font-weight: 700; }
+.rule-text small { display: block; color: #93a19c; font-size: 0.78rem; margin-top: 2px; }
+
+.example-box { background: #f6fdfb; border: 1.5px solid #dcf3ee; border-radius: 12px; padding: 12px 14px; margin-bottom: 12px; font-size: 0.88rem; line-height: 1.7; }
+.example-box .ex-label { font-size: 0.68rem; font-weight: 700; color: #7c8f89; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+.ex-correct { color: #16a34a; font-weight: 700; }
+
+.flow-grid { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 12px; }
+.flow-step { background: #f6fdfb; border: 1.5px solid #dcf3ee; border-radius: 12px; padding: 8px 12px; font-size: 0.82rem; font-weight: 700; color: #0d9488; }
+.flow-arrow { color: #7c8f89; font-weight: 900; }
+
+.num-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.num-item { background: #f6fdfb; border: 1.5px solid #dcf3ee; border-radius: 12px; padding: 10px 12px; text-align: center; }
+.num-item .num-big { font-size: 1.2rem; font-weight: 900; color: #0369a1; }
+.num-item .num-def  { font-size: 0.74rem; color: #6b7280; margin-top: 2px; line-height: 1.3; }
+
+.bottom-nav { display: flex; gap: 10px; padding: 0 14px; margin: 20px 0 10px; }
+.bottom-nav a { flex: 1; padding: 13px 10px; border-radius: 14px; text-decoration: none; text-align: center; font-size: 0.85rem; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 6px; }
+.btn-home { background: rgba(13,148,136,0.12); border: 1.5px solid rgba(13,148,136,0.25); color: #0d9488 !important; }
+.btn-next { background: linear-gradient(135deg,#0d9488,#2dd4bf); color: white !important; }
+
+.divider { height: 1px; background: #dcf3ee; margin: 8px 16px 0; }
+.progress-footer { position: fixed; bottom: 0; left: 0; right: 0; background: white; border-top: 1px solid #dcf3ee; padding: 10px 16px; display: flex; align-items: center; gap: 12px; z-index: 20; }
+.pf-label { font-size: 0.75rem; font-weight: 700; color: #0d9488; white-space: nowrap; }
+.pf-bar { flex: 1; background: #dcf3ee; border-radius: 10px; height: 8px; overflow: hidden; }
+.pf-fill { height: 100%; background: linear-gradient(90deg,#0d9488,#16a34a); border-radius: 10px; transition: width 0.5s; width: 0%; }
+.pf-pct { font-size: 0.75rem; font-weight: 700; color: #7c8f89; }
+.credit { text-align: center; padding: 16px 14px 8px; font-size: 0.75rem; color: #bbb; }
+.credit strong { color: #5eead4; }
+
+@media print {
+  .top-nav, .print-btn-wrap, .nav-dots, .progress-footer, .bottom-nav, .hero, .credit { display: none !important; }
+  html, body { background: white !important; color: #111 !important; font-size: 11pt; }
+  body * { background-color: transparent !important; background-image: none !important; color: #111 !important; box-shadow: none !important; text-shadow: none !important; }
+}
+</style>
+</head>
+<body>
+<div class="top-nav">
+  <a href="index.html">🏠 Início</a>
+  <span>📚 Resumo do Conteúdo</span>
+</div>
+<div class="hero">
+  <span class="hero-emoji">📚</span>
+  <h1>Resumo de Geografia</h1>
+  <h2>Recursos Naturais e o Trabalho Humano · Caps. 7 e 8</h2>
+  <div class="hero-pill">🌱 Leia antes de fazer a prova!</div>
+</div>
+
+<div class="nav-dots">
+  <button class="nav-dot active" data-target="sec1">💧 Água</button>
+  <button class="nav-dot" data-target="sec2">🏞️ Mananciais</button>
+  <button class="nav-dot" data-target="sec3">🎨 Tipos</button>
+  <button class="nav-dot" data-target="sec4">🚰 Saneamento</button>
+  <button class="nav-dot" data-target="sec5">⚡ Energia</button>
+  <button class="nav-dot" data-target="sec6">🌽 Matéria-prima</button>
+  <button class="nav-dot" data-target="sec7">🏭 Trabalho</button>
+  <button class="nav-dot" data-target="sec8">⚙️ Tecnologia</button>
+</div>
+
+<!-- SEC 1 -->
+<div class="section" id="sec1">
+  <div class="section-header">
+    <div class="section-icon s1">💧</div>
+    <div><div class="section-title">A Água, um Recurso Natural</div><div class="section-sub">De onde vem e por que é tão importante</div></div>
+  </div>
+
+  <div class="tip"><div class="tip-title">💡 Por que a água é importante?</div>
+    A água é um <strong>recurso natural</strong> fundamental para todos os seres vivos. Usamos água para beber, cozinhar, tomar banho, produzir alimentos e muito mais.
+  </div>
+
+  <div class="rule-box">
+    <div class="rule-title">📐 Água doce × Água salgada</div>
+    <div class="rule-row"><span class="rule-tag bg-blue">Água salgada</span><div class="rule-text">É a <em>maior parte</em> da água do planeta.<small>Está nos oceanos e mares.</small></div></div>
+    <div class="rule-row"><span class="rule-tag bg-teal">Água doce</span><div class="rule-text">É uma parte <em>muito pequena</em> em comparação com a água salgada.<small>Rios, lagos, geleiras e água subterrânea. É a que bebemos e usamos no dia a dia.</small></div></div>
+  </div>
+
+  <div class="tip"><div class="tip-title">🌧️ De onde vem a chuva?</div>
+    O calor do <strong>Sol</strong> esquenta a água dos rios, lagos e mares. Essa água <strong>evapora</strong> (vira vapor e sobe para o céu) e forma as nuvens. Quando as nuvens ficam pesadas, a água cai como <strong>chuva</strong>. Esse é o ciclo da água!
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- SEC 2 -->
+<div class="section" id="sec2">
+  <div class="section-header">
+    <div class="section-icon s2">🏞️</div>
+    <div><div class="section-title">Águas Superficiais e Subterrâneas</div><div class="section-sub">Os mananciais, nossas reservas de água</div></div>
+  </div>
+
+  <div class="tip"><div class="tip-title">💡 O que são mananciais?</div>
+    As reservas de água da Terra são chamadas de <strong>mananciais</strong>.
+  </div>
+
+  <div class="rule-box">
+    <div class="rule-title">📐 Dois tipos de manancial</div>
+    <div class="rule-row"><span class="rule-tag bg-blue">Águas superficiais</span><div class="rule-text">Estão <em>na superfície</em> da Terra.<small>Ex: rios, lagos, lagoas e córregos.</small></div></div>
+    <div class="rule-row"><span class="rule-tag bg-teal">Águas subterrâneas</span><div class="rule-text">Ficam <em>escondidas embaixo da terra</em>.<small>Ex: fontes naturais, poços, lençol freático.</small></div></div>
+  </div>
+
+  <div class="example-box">
+    <div class="ex-label">Exemplo</div>
+    A água da chuva entra no solo e fica guardada em espaços embaixo dele. Essa é a <span class="ex-correct">água subterrânea</span> (também chamada de lençol freático).
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- SEC 3 -->
+<div class="section" id="sec3">
+  <div class="section-header">
+    <div class="section-icon s3">🎨</div>
+    <div><div class="section-title">Tipos de Água: Azul, Verde e Cinza</div><div class="section-sub">As cores que os cientistas usam para classificar a água</div></div>
+  </div>
+
+  <div class="tip"><div class="tip-title">💡 Por que existem essas "cores"?</div>
+    Os maiores gastos de água estão relacionados ao cultivo da terra e à criação de animais. Para isso, os cientistas classificaram os tipos de água em três grupos.
+  </div>
+
+  <div class="rule-box">
+    <div class="rule-title">📐 As três cores da água</div>
+    <div class="rule-row"><span class="rule-tag bg-blue">Água azul</span><div class="rule-text">Água dos rios, lagos, represas e chuvas.<small>É usada na agricultura e na casa das pessoas (água potável).</small></div></div>
+    <div class="rule-row"><span class="rule-tag bg-green">Água verde</span><div class="rule-text">Água disponível no solo para os vegetais.<small>É absorvida pelas raízes das plantas e depois evapora (evapotranspiração).</small></div></div>
+    <div class="rule-row"><span class="rule-tag bg-gray">Água cinza</span><div class="rule-text">Água que <em>já foi utilizada</em> pelo ser humano.<small>Vai para a rede de esgoto — precisa ser limpa e tratada antes de voltar à natureza.</small></div></div>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- SEC 4 -->
+<div class="section" id="sec4">
+  <div class="section-header">
+    <div class="section-icon s4">🚰</div>
+    <div><div class="section-title">Saneamento, Esgoto e Água em Números</div><div class="section-sub">Para onde vai a água depois que usamos?</div></div>
+  </div>
+
+  <div class="tip"><div class="tip-title">💡 A água foi pelo ralo!</div>
+    Depois de escovar os dentes ou tomar banho, a água usada vai para onde? Na maioria das vezes, ela é levada pela rede de <strong>esgoto</strong>.
+  </div>
+
+  <div class="rule-box">
+    <div class="rule-title">📐 Palavras importantes</div>
+    <div class="rule-row"><span class="rule-tag bg-teal">Saneamento</span><div class="rule-text">Tratamento da água e do esgoto.<small>Deixa a água própria para consumo e devolve à natureza de forma correta.</small></div></div>
+    <div class="rule-row"><span class="rule-tag bg-gray">Esgoto</span><div class="rule-text">Rede que recebe as águas já utilizadas.<small>São impróprias para consumo e precisam passar pela Estação de Tratamento de Esgoto (ETE).</small></div></div>
+  </div>
+
+  <div class="tip"><div class="tip-title">📊 Você sabia?</div>
+    No Brasil, a cada <strong>100 pessoas</strong>: <strong>45 não têm</strong> rede de esgoto em casa e <strong>16 não têm</strong> água potável para beber.
+  </div>
+
+  <div class="card">
+    <div class="card-title">🔢 Água em números (água virtual)</div>
+    <div class="num-grid">
+      <div class="num-item"><div class="num-big">100 L</div><div class="num-def">de água para produzir 1 kg de batata</div></div>
+      <div class="num-item"><div class="num-big">135 L</div><div class="num-def">de água usados por dia para higiene</div></div>
+      <div class="num-item"><div class="num-big">110 L</div><div class="num-def">consumo médio de água por pessoa, por dia</div></div>
+      <div class="num-item"><div class="num-big">40 L</div><div class="num-def">desperdiçados a cada 100 litros de água potável no Brasil</div></div>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- SEC 5 -->
+<div class="section" id="sec5">
+  <div class="section-header">
+    <div class="section-icon s5">⚡</div>
+    <div><div class="section-title">Energia: as Hidrelétricas</div><div class="section-sub">Como a água vira energia elétrica</div></div>
+  </div>
+
+  <div class="tip"><div class="tip-title">💡 A água move o mundo</div>
+    A água também é fundamental para gerar <strong>energia elétrica</strong>! As <strong>hidrelétricas</strong> (como a Usina de Itaipu) usam a <strong>força da água</strong> que desce com força para mover turbinas e gerar energia.
+  </div>
+
+  <div class="rule-box">
+    <div class="rule-title">📐 Como a energia chega até nós</div>
+    <div class="rule-row"><span class="rule-tag bg-blue">1. Represa</span><div class="rule-text">A água é represada e ganha força ao ser liberada.</div></div>
+    <div class="rule-row"><span class="rule-tag bg-teal">2. Turbinas</span><div class="rule-text">A força da água move as turbinas e gera energia elétrica.</div></div>
+    <div class="rule-row"><span class="rule-tag bg-amber">3. Cabos de alta tensão</span><div class="rule-text">Uma rede de cabos leva essa energia até transformadores.</div></div>
+    <div class="rule-row"><span class="rule-tag bg-green">4. Casas e empresas</span><div class="rule-text">A energia é redistribuída para casas e empresas.</div></div>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- SEC 6 -->
+<div class="section" id="sec6">
+  <div class="section-header">
+    <div class="section-icon s6">🌽</div>
+    <div><div class="section-title">Matéria-prima: da Natureza ao Produto</div><div class="section-sub">Como a natureza vira produto final</div></div>
+  </div>
+
+  <div class="tip"><div class="tip-title">💡 O que é matéria-prima?</div>
+    Chamamos de <strong>matéria-prima</strong> os itens que servem de base para a criação de um produto final. Ela pode ser retirada diretamente da natureza (<em>in natura</em>) ou já ter passado por algum processo de modificação.
+  </div>
+
+  <div class="example-box">
+    <div class="ex-label">Exemplo — Da roça até a pamonha</div>
+    <div class="flow-grid">
+      <div class="flow-step">🌽 Plantar milho</div><div class="flow-arrow">→</div>
+      <div class="flow-step">✂️ Colher e descascar</div><div class="flow-arrow">→</div>
+      <div class="flow-step">🥣 Preparar a massa</div><div class="flow-arrow">→</div>
+      <div class="flow-step">🌿 Enrolar na palha</div><div class="flow-arrow">→</div>
+      <div class="flow-step">🍲 Cozinhar</div><div class="flow-arrow">→</div>
+      <div class="flow-step">🎉 Pamonha pronta!</div>
+    </div>
+  </div>
+
+  <div class="rule-box">
+    <div class="rule-title">📐 Outros exemplos de matéria-prima</div>
+    <div class="rule-row"><span class="rule-tag bg-blue">Água</span><div class="rule-text">Usada na fabricação de muitos produtos.</div></div>
+    <div class="rule-row"><span class="rule-tag bg-teal">Algodão</span><div class="rule-text">Usado para fazer roupas (tecidos).</div></div>
+    <div class="rule-row"><span class="rule-tag bg-amber">Argila</span><div class="rule-text">Usada para fazer potes de cerâmica.</div></div>
+    <div class="rule-row"><span class="rule-tag bg-green">Madeira</span><div class="rule-text">Usada para fazer móveis.</div></div>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- SEC 7 -->
+<div class="section" id="sec7">
+  <div class="section-header">
+    <div class="section-icon s7">🏭</div>
+    <div><div class="section-title">Trabalho Manual e Trabalho Industrial</div><div class="section-sub">Duas formas diferentes de produzir</div></div>
+  </div>
+
+  <div class="rule-box">
+    <div class="rule-title">📐 Manual (artesanato) × Industrial</div>
+    <div class="rule-row"><span class="rule-tag bg-amber">Trabalho manual</span><div class="rule-text">Uma <em>só pessoa</em> faz o objeto do início ao fim.<small>Prepara a matéria-prima, modela e finaliza. É detalhado e cada peça é única (artesanato).</small></div></div>
+    <div class="rule-row"><span class="rule-tag bg-gray">Trabalho industrial</span><div class="rule-text">Usa <em>máquinas</em> para produzir muitos produtos iguais.<small>Em grande quantidade e de forma mais rápida (fábricas).</small></div></div>
+  </div>
+
+  <div class="tip"><div class="tip-title">🏭 A Revolução Industrial</div>
+    Começou na <strong>Inglaterra</strong>, por volta de <strong>1760</strong>. As primeiras fábricas fabricavam <strong>fios e tecidos</strong>, com teares movidos a vapor. Depois vieram os <strong>trens</strong>, para transportar cargas e pessoas mais rápido. Com o tempo, surgiram as <strong>linhas de montagem</strong>, usadas até hoje na fabricação de automóveis.
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- SEC 8 -->
+<div class="section" id="sec8">
+  <div class="section-header">
+    <div class="section-icon s8">⚙️</div>
+    <div><div class="section-title">Tecnologia, Minerais e Cuidado com a Natureza</div><div class="section-sub">Da necessidade à invenção — e o cuidado que precisamos ter</div></div>
+  </div>
+
+  <div class="tip"><div class="tip-title">💡 Necessidade gera invenção</div>
+    O ser humano cria ferramentas e tecnologias para resolver necessidades do dia a dia. Por exemplo: a necessidade de <strong>limpar os dentes</strong> criou a <em>escova de dentes</em>; a necessidade de <strong>cortar materiais</strong> criou a <em>tesoura</em>.
+  </div>
+
+  <div class="rule-box">
+    <div class="rule-title">📐 Minerais usados na tecnologia</div>
+    <div class="rule-row"><span class="rule-tag bg-gray">Computador</span><div class="rule-text">Usa plástico (do petróleo), vidro (da areia) e minerais.<small>Ex: quartzo, ouro, prata, chumbo e cobre.</small></div></div>
+  </div>
+
+  <div class="tip"><div class="tip-title">🌳 Cuidado com a natureza</div>
+    Explorar recursos naturais <strong>sem planejamento</strong> pode causar: <strong>desmatamento</strong>, <strong>poluição dos rios</strong>, <strong>perda de fertilidade do solo</strong> e <strong>poluição sonora</strong>. Por isso, é importante usar os recursos naturais com responsabilidade!
+  </div>
+
+  <div class="pf-bar"><div class="pf-fill" id="pfFill"></div></div>
+  <div class="pf-pct" id="pfPct">0%</div>
+</div>
+
+<div class="bottom-nav">
+  <a href="index.html" class="btn-home">🏠 Voltar ao Início</a>
+  <a href="nivel1_basico.html" class="btn-next">⭐ Nível 1 →</a>
+</div>
+
+<div style="height:60px;"></div>
+<div class="progress-footer">
+  <div class="pf-label">📖 Progresso</div>
+  <div class="pf-bar"><div class="pf-fill" id="pfFill"></div></div>
+  <div class="pf-pct" id="pfPct">0%</div>
+</div>
+
+<div class="credit">Desenvolvido por <strong>Jhony Beraldo</strong></div>
+
+<script>
+document.querySelectorAll('.nav-dot[data-target]').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.nav-dot').forEach(function(d) { d.classList.remove('active'); });
+    btn.classList.add('active');
+    var target = document.getElementById(btn.dataset.target);
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+var sections = ['sec1','sec2','sec3','sec4','sec5','sec6','sec7','sec8'];
+function updateProgress() {
+  var scrolled = window.scrollY + window.innerHeight;
+  var total = document.body.scrollHeight;
+  var pct = Math.min(100, Math.round((scrolled / total) * 100));
+  document.getElementById('pfFill').style.width = pct + '%';
+  document.getElementById('pfPct').textContent = pct + '%';
+  for (var i = sections.length - 1; i >= 0; i--) {
+    var el = document.getElementById(sections[i]);
+    if (el && window.scrollY >= el.offsetTop - 120) {
+      document.querySelectorAll('.nav-dot').forEach(function(d, idx) { d.classList.toggle('active', idx === i); });
+      break;
+    }
+  }
+}
+window.addEventListener('scroll', updateProgress, { passive: true });
+updateProgress();
+</script>
+</body>
+</html>
