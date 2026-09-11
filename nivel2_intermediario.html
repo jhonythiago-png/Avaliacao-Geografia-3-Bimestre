@@ -73,19 +73,14 @@ body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0f2027; min-
   body * { background-color: transparent !important; background-image: none !important; color: #111 !important; box-shadow: none !important; overflow: visible !important; }
   .exam-header { display: block !important; border: 2px solid #555 !important; }
   .eh-field input { border-bottom: 1.5px solid #555 !important; color: #111 !important; }
-  .card { border: 1px solid #ccc !important; }
+  .card { border: 1px solid #ccc !important; break-inside: avoid !important; page-break-inside: avoid !important; }
   .opt-btn { border: 1.5px solid #bbb !important; color: #222 !important; background: white !important; margin-bottom: 4px !important; }
   .opt-btn.correct, .opt-btn.wrong { background: white !important; border-color: #bbb !important; }
   .blank-input { border: none !important; border-bottom: 1.5px solid #555 !important; border-radius: 0 !important; color: #111 !important; background: transparent !important; }
   .check-btn { display: none !important; }
   .feedback { display: none !important; }
-  .header { background: white !important; border-bottom: 2px solid #d97706 !important; }
-  .header h1, .header p, .level-tag { color: #111 !important; }
+  .header { background: #d97706 !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
   .credit { color: #888 !important; }
-  #q4 { page-break-before: always !important; break-before: always !important; }
-  #q7 { page-break-before: always !important; break-before: always !important; }
-  #q10 { page-break-before: always !important; break-before: always !important; }
-  #q13 { page-break-before: always !important; break-before: always !important; }
   @page { margin: 1.5cm; }
 }
 </style>
