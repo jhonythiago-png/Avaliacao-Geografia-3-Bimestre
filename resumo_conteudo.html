@@ -92,10 +92,11 @@ body { font-family: 'Segoe UI', system-ui, sans-serif; background: #eefaf6; colo
 .credit strong { color: #5eead4; }
 
 @media print {
-  .top-nav, .print-btn-wrap, .nav-dots, .progress-footer, .bottom-nav, .hero, .credit { display: none !important; }
+  .top-nav, .print-btn-wrap, .nav-dots, .progress-footer, .bottom-nav, .hero, .credit, .pf-bar, .pf-pct { display: none !important; }
   .print-title-header { display: block !important; }
-  html, body { background: white !important; color: #111 !important; font-size: 11pt; }
-  body * { background-color: transparent !important; background-image: none !important; color: #111 !important; box-shadow: none !important; text-shadow: none !important; }
+  html, body { background: white !important; color: #111 !important; font-size: 11pt; min-height: 0 !important; height: auto !important; overflow: visible !important; }
+  body { padding-bottom: 0 !important; }
+  body * { background-color: transparent !important; background-image: none !important; color: #111 !important; box-shadow: none !important; text-shadow: none !important; overflow: visible !important; }
 
   .section { padding: 10px 0 4px !important; page-break-inside: avoid !important; }
   .section-header { margin-bottom: 8px !important; }
