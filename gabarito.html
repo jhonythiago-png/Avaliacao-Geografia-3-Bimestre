@@ -54,13 +54,28 @@ body { font-family: 'Segoe UI', system-ui, sans-serif; background: #eefaf6; min-
   .answer-item { break-inside: avoid !important; page-break-inside: avoid !important; }
   .level-header { page-break-after: avoid !important; break-after: avoid !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
   .hero { padding: 14px 20px !important; }
-  .lv1 { background: linear-gradient(135deg,#0d9488,#2dd4bf) !important; }
-  .lv2 { background: linear-gradient(135deg,#f7971e,#ffd200) !important; }
-  .lv3 { background: linear-gradient(135deg,#0369a1,#7c3aed) !important; }
+  .level-header.lv1 { background: linear-gradient(135deg,#0d9488,#2dd4bf) !important; }
+  .level-header.lv2 { background: linear-gradient(135deg,#f7971e,#ffd200) !important; }
+  .level-header.lv3 { background: linear-gradient(135deg,#0369a1,#7c3aed) !important; }
   .credit { color: #888 !important; }
   @page { margin: 1.5cm; }
 }
+
+/* ---- PDF EXPORT (JS-generated, not native print) ---- */
+body.pdf-export .top-nav, body.pdf-export .print-btn-wrap, body.pdf-export .bottom-nav { display: none !important; }
+  body.pdf-export, body.pdf-export { background: white !important; color: #111 !important; min-height: 0 !important; height: auto !important; overflow: visible !important; }
+  body.pdf-export { padding-bottom: 0 !important; }
+  body.pdf-export * { background-color: transparent !important; background-image: none !important; color: #111 !important; box-shadow: none !important; overflow: visible !important; }
+  body.pdf-export .answers-list { border: 1px solid #ccc !important; }
+  body.pdf-export .answer-item { break-inside: avoid !important; page-break-inside: avoid !important; }
+  body.pdf-export .level-header { page-break-after: avoid !important; break-after: avoid !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  body.pdf-export .hero { padding: 14px 20px !important; }
+  body.pdf-export .level-header.lv1 { background: linear-gradient(135deg,#0d9488,#2dd4bf) !important; }
+  body.pdf-export .level-header.lv2 { background: linear-gradient(135deg,#f7971e,#ffd200) !important; }
+  body.pdf-export .level-header.lv3 { background: linear-gradient(135deg,#0369a1,#7c3aed) !important; }
+  body.pdf-export .credit { color: #888 !important; }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
 <div class="top-nav">
@@ -75,7 +90,7 @@ body { font-family: 'Segoe UI', system-ui, sans-serif; background: #eefaf6; min-
   <div class="hero-pill">Todos os níveis com explicações</div>
 </div>
 <div class="wrap">
-<div class="print-btn-wrap"><button class="print-btn" onclick="window.print()">🖨️ Imprimir Gabarito</button></div>
+<div class="print-btn-wrap"><button class="print-btn" id="pdfBtn" onclick="downloadPDF()">⬇️ Baixar PDF</button></div>
 
 <!-- NÍVEL 1 -->
 <div class="level-block">
@@ -154,5 +169,32 @@ body { font-family: 'Segoe UI', system-ui, sans-serif; background: #eefaf6; min-
 </div>
 </div>
 <div class="credit">Desenvolvido por <strong>Jhony Beraldo</strong></div>
+<script>
+function downloadPDF() {
+  var btn = document.getElementById('pdfBtn');
+  var originalText = btn.textContent;
+  btn.textContent = '⏳ Gerando PDF...';
+  btn.disabled = true;
+  document.body.classList.add('pdf-export');
+  var opt = {
+    margin: 12,
+    filename: 'Geografia_Gabarito.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2, useCORS: true },
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+    pagebreak: { mode: ['css', 'legacy'] }
+  };
+  html2pdf().set(opt).from(document.body).save().then(function() {
+    document.body.classList.remove('pdf-export');
+    btn.textContent = originalText;
+    btn.disabled = false;
+  }).catch(function(err) {
+    document.body.classList.remove('pdf-export');
+    btn.textContent = originalText;
+    btn.disabled = false;
+    alert('Nao foi possivel gerar o PDF. Tente novamente.');
+  });
+}
+</script>
 </body>
 </html>

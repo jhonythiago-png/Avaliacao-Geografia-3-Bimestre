@@ -83,7 +83,24 @@ body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0f2027; min-
   .credit { color: #888 !important; }
   @page { margin: 1.5cm; }
 }
+
+/* ---- PDF EXPORT (JS-generated, not native print) ---- */
+body.pdf-export .top-nav, body.pdf-export .print-btn-wrap, body.pdf-export .score-bar, body.pdf-export .finish-btn, body.pdf-export .result-panel, body.pdf-export #resultPanel, body.pdf-export .bottom-nav { display: none !important; }
+  body.pdf-export, body.pdf-export { background: white !important; color: #111 !important; min-height: 0 !important; height: auto !important; overflow: visible !important; }
+  body.pdf-export { padding-bottom: 0 !important; }
+  body.pdf-export * { background-color: transparent !important; background-image: none !important; color: #111 !important; box-shadow: none !important; overflow: visible !important; }
+  body.pdf-export .exam-header { display: block !important; border: 2px solid #555 !important; }
+  body.pdf-export .eh-field input { border-bottom: 1.5px solid #555 !important; color: #111 !important; }
+  body.pdf-export .card { border: 1px solid #ccc !important; break-inside: avoid !important; page-break-inside: avoid !important; }
+  body.pdf-export .opt-btn { border: 1.5px solid #bbb !important; color: #222 !important; background: white !important; margin-bottom: 4px !important; }
+  body.pdf-export .opt-btn.correct, body.pdf-export .opt-btn.wrong { background: white !important; border-color: #bbb !important; }
+  body.pdf-export .blank-input { border: none !important; border-bottom: 1.5px solid #555 !important; border-radius: 0 !important; color: #111 !important; background: transparent !important; }
+  body.pdf-export .check-btn { display: none !important; }
+  body.pdf-export .feedback { display: none !important; }
+  body.pdf-export .header { background: #d97706 !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  body.pdf-export .credit { color: #888 !important; }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
 <div class="top-nav">
@@ -106,7 +123,7 @@ body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0f2027; min-
 </div>
 
 <div class="wrap">
-<div class="print-btn-wrap"><button class="print-btn" onclick="window.print()">🖨️ Imprimir Avaliação</button></div>
+<div class="print-btn-wrap"><button class="print-btn" id="pdfBtn" onclick="downloadPDF()">⬇️ Baixar PDF</button></div>
 <div class="score-bar">
   <span class="score-label">Pontuação</span>
   <span class="score-num" id="scoreDisplay">0 / 14</span>
@@ -293,6 +310,32 @@ body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0f2027; min-
 <div class="credit">Desenvolvido por <strong>Jhony Beraldo</strong></div>
 
 <script>
+function downloadPDF() {
+  var btn = document.getElementById('pdfBtn');
+  var originalText = btn.textContent;
+  btn.textContent = '⏳ Gerando PDF...';
+  btn.disabled = true;
+  document.body.classList.add('pdf-export');
+  var opt = {
+    margin: 12,
+    filename: 'Geografia_Nivel2_Intermediario.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2, useCORS: true },
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+    pagebreak: { mode: ['css', 'legacy'] }
+  };
+  html2pdf().set(opt).from(document.body).save().then(function() {
+    document.body.classList.remove('pdf-export');
+    btn.textContent = originalText;
+    btn.disabled = false;
+  }).catch(function(err) {
+    document.body.classList.remove('pdf-export');
+    btn.textContent = originalText;
+    btn.disabled = false;
+    alert('Nao foi possivel gerar o PDF. Tente novamente.');
+  });
+}
+
 var score = 0;
 var answered = {};
 var total = 14;

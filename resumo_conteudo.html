@@ -135,7 +135,41 @@ body { font-family: 'Segoe UI', system-ui, sans-serif; background: #eefaf6; colo
 
   @page { margin: 1.5cm; }
 }
+
+/* ---- PDF EXPORT (JS-generated, not native print) ---- */
+body.pdf-export .top-nav, body.pdf-export .print-btn-wrap, body.pdf-export .nav-dots, body.pdf-export .progress-footer, body.pdf-export .bottom-nav, body.pdf-export .hero, body.pdf-export .credit, body.pdf-export .pf-bar, body.pdf-export .pf-pct { display: none !important; }
+  body.pdf-export .print-title-header { display: block !important; }
+  body.pdf-export, body.pdf-export { background: white !important; color: #111 !important; font-size: 11pt; min-height: 0 !important; height: auto !important; overflow: visible !important; }
+  body.pdf-export { padding-bottom: 0 !important; }
+  body.pdf-export * { background-color: transparent !important; background-image: none !important; color: #111 !important; box-shadow: none !important; text-shadow: none !important; overflow: visible !important; }
+  body.pdf-export .section { padding: 10px 0 4px !important; page-break-inside: avoid !important; }
+  body.pdf-export .section-header { margin-bottom: 8px !important; }
+  body.pdf-export .section-icon { width: 32px !important; height: 32px !important; font-size: 1rem !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  body.pdf-export .section-title { font-size: 12pt !important; font-weight: 700 !important; color: #14211d !important; }
+  body.pdf-export .section-sub { color: #555 !important; }
+  body.pdf-export .card { border: 1px solid #bbb !important; border-radius: 6px !important; break-inside: avoid !important; page-break-inside: avoid !important; margin-bottom: 8px !important; padding: 10px !important; }
+  body.pdf-export .card-title { color: #0d9488 !important; }
+  body.pdf-export .rule-box { border: 1.5px solid #555 !important; border-radius: 6px !important; break-inside: avoid !important; page-break-inside: avoid !important; padding: 10px !important; }
+  body.pdf-export .rule-title { color: #0d9488 !important; }
+  body.pdf-export .rule-tag { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; font-size: 8pt !important; padding: 2px 6px !important; }
+  body.pdf-export .rule-text { font-size: 10pt !important; }
+  body.pdf-export .rule-text em { color: #0d9488 !important; }
+  body.pdf-export .rule-row { border-bottom: 1px dashed #ccc !important; }
+  body.pdf-export .tip { border-left: 3px solid #0d9488 !important; background: #f4fdfb !important; break-inside: avoid !important; page-break-inside: avoid !important; padding: 8px 10px !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  body.pdf-export .tip strong { color: #0d9488 !important; }
+  body.pdf-export .example-box { border: 1px solid #ccc !important; border-radius: 4px !important; break-inside: avoid !important; page-break-inside: avoid !important; }
+  body.pdf-export .ex-correct { color: #166534 !important; }
+  body.pdf-export .flow-grid { break-inside: avoid !important; page-break-inside: avoid !important; }
+  body.pdf-export .flow-step { border: 1px solid #ccc !important; }
+  body.pdf-export .flow-arrow { color: #555 !important; }
+  body.pdf-export .num-grid { break-inside: avoid !important; page-break-inside: avoid !important; }
+  body.pdf-export .num-item { border: 1px solid #ddd !important; border-radius: 4px !important; }
+  body.pdf-export .num-item .num-big { color: #0369a1 !important; }
+  body.pdf-export .divider { border-top: 1px solid #ddd !important; display: block !important; }
+  body.pdf-export #sec1 { page-break-before: avoid !important; }
+  body.pdf-export #sec2, body.pdf-export #sec3, body.pdf-export #sec4, body.pdf-export #sec5, body.pdf-export #sec6, body.pdf-export #sec7, body.pdf-export #sec8 { page-break-before: always !important; }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
 
@@ -156,7 +190,7 @@ body { font-family: 'Segoe UI', system-ui, sans-serif; background: #eefaf6; colo
   <div class="hero-pill">🌱 Leia antes de fazer a prova!</div>
 </div>
 
-<div class="print-btn-wrap"><button class="print-btn" onclick="window.print()">🖨️ Imprimir Resumo</button></div>
+<div class="print-btn-wrap"><button class="print-btn" id="pdfBtn" onclick="downloadPDF()">⬇️ Baixar PDF</button></div>
 
 <div class="nav-dots">
   <button class="nav-dot active" data-target="sec1">💧 Água</button>
@@ -381,6 +415,32 @@ body { font-family: 'Segoe UI', system-ui, sans-serif; background: #eefaf6; colo
 <div class="credit">Desenvolvido por <strong>Jhony Beraldo</strong></div>
 
 <script>
+function downloadPDF() {
+  var btn = document.getElementById('pdfBtn');
+  var originalText = btn.textContent;
+  btn.textContent = '⏳ Gerando PDF...';
+  btn.disabled = true;
+  document.body.classList.add('pdf-export');
+  var opt = {
+    margin: 12,
+    filename: 'Resumo_Geografia.pdf',
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2, useCORS: true },
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+    pagebreak: { mode: ['css', 'legacy'] }
+  };
+  html2pdf().set(opt).from(document.body).save().then(function() {
+    document.body.classList.remove('pdf-export');
+    btn.textContent = originalText;
+    btn.disabled = false;
+  }).catch(function(err) {
+    document.body.classList.remove('pdf-export');
+    btn.textContent = originalText;
+    btn.disabled = false;
+    alert('Nao foi possivel gerar o PDF. Tente novamente.');
+  });
+}
+
 document.querySelectorAll('.nav-dot[data-target]').forEach(function(btn) {
   btn.addEventListener('click', function() {
     document.querySelectorAll('.nav-dot').forEach(function(d) { d.classList.remove('active'); });
