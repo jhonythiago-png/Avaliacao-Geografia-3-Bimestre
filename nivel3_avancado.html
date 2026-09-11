@@ -20,6 +20,8 @@ body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0a1620; min-
 .header p  { font-size: 0.82rem; color: rgba(255,255,255,0.8); margin-top: 4px; }
 .level-tag { display: inline-block; background: linear-gradient(90deg,#0369a1,#7c3aed); color: white; font-size: 0.72rem; font-weight: 800; padding: 3px 12px; border-radius: 20px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
 .wrap { padding: 0 14px; }
+.print-btn-wrap { text-align: right; margin-bottom: 12px; }
+.print-btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 16px; background: transparent; border: 1px solid rgba(167,139,250,0.35); border-radius: 20px; font-size: 0.78rem; font-family: inherit; font-weight: 600; color: rgba(167,139,250,0.85); cursor: pointer; }
 .info-banner { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 12px 14px; margin-bottom: 16px; font-size: 0.82rem; color: rgba(255,255,255,0.75); line-height: 1.5; }
 .info-banner strong { color: #a78bfa; }
 .score-bar { background: rgba(255,255,255,0.06); border-radius: 14px; padding: 12px 16px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; }
@@ -69,6 +71,23 @@ textarea.blank-input { min-height: 80px; resize: vertical; font-family: inherit;
 .btn-home-only { background: rgba(13,148,136,0.12); border: 1.5px solid rgba(13,148,136,0.3); color: #5eead4 !important; flex: 0.6; }
 .credit { text-align: center; padding: 20px 14px 8px; font-size: 0.75rem; color: rgba(255,255,255,0.3); }
 .credit strong { color: #5eead4; }
+@media print {
+  .top-nav,.print-btn-wrap,.info-banner,.score-bar,.finish-btn,.result-panel,#resultPanel,.bottom-nav { display: none !important; }
+  html, body { background: white !important; color: #111 !important; }
+  body * { background-color: transparent !important; background-image: none !important; color: #111 !important; box-shadow: none !important; }
+  .exam-header { display: block !important; border: 2px solid #555 !important; }
+  .eh-field input { border-bottom: 1.5px solid #555 !important; color: #111 !important; }
+  .card { border: 1px solid #ccc !important; break-inside: avoid !important; page-break-inside: avoid !important; }
+  .opt-btn { border: 1.5px solid #bbb !important; color: #222 !important; background: white !important; margin-bottom: 4px !important; }
+  .opt-btn.correct, .opt-btn.wrong { background: white !important; border-color: #bbb !important; }
+  .blank-input { border: none !important; border-bottom: 1.5px solid #555 !important; border-radius: 0 !important; color: #111 !important; background: transparent !important; }
+  textarea.blank-input { border: 1px solid #999 !important; }
+  .check-btn { display: none !important; }
+  .feedback { display: none !important; }
+  .header { background: #0369a1 !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  .credit { color: #888 !important; }
+  @page { margin: 1.5cm; size: A4; }
+}
 </style>
 </head>
 <body>
@@ -92,6 +111,7 @@ textarea.blank-input { min-height: 80px; resize: vertical; font-family: inherit;
 </div>
 
 <div class="wrap">
+<div class="print-btn-wrap"><button class="print-btn" onclick="window.print()">🖨️ Imprimir Avaliação</button></div>
 <div class="info-banner">💡 As questões de <strong>1 a 18</strong> valem ponto. As <strong>3 últimas</strong> são de reflexão (sem resposta certa ou errada) — depois é só conferir a sugestão no gabarito!</div>
 <div class="score-bar">
   <span class="score-label">Pontuação</span>
